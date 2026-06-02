@@ -20,6 +20,8 @@
     --ring: oklch(0.439 0 0);
     --font-weight-medium: 500;
     --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --chart-1: oklch(0.488 0.243 264.376);
     --chart-2: oklch(0.696 0.17 162.48);
     --chart-3: oklch(0.769 0.188 70.08);
@@ -36,7 +38,15 @@
     --tropical-green: #047857;
     --tropical-teal: #14b8a6;
     --soft-yellow: #fbbf24;
-    --warm-orange: #fb923c;
+    --warm-orange: #c45d08;
+    --cloudbeats-gradient: linear-gradient(90deg, var(--tropical-teal), var(--tropical-green), var(--soft-yellow), var(--warm-orange));
+    --hero-accent-bg:
+        radial-gradient(
+            circle at top,
+            rgba(20, 184, 165, 0.12) 0%,
+            rgba(13, 148, 137, 0.08) 10%,
+            transparent 50%
+        );
 }
 
 
@@ -54,18 +64,29 @@ section {
     margin-top: 48px;
 }
 
+
 .logo {
     color: #fff;
     text-align: center;
+    background: var(--hero-accent-bg);
+}
+
+.hero {
+    background: var(--hero-accent-bg);
+}
+
+.hero-title {
+    background: var(--cloudbeats-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .logo h1 {
     font-size: 100px;
     margin: 0 0 0 16px;
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-bold);
     line-height: 1.5;
-
-
+    
 }
 
 .logo p {
@@ -76,7 +97,7 @@ section {
 }
 
 .logo i {
-    font-size: 120px;
+    font-size: 150px;
     margin: 16px 16px;
     color: var(--tropical-teal);
     
@@ -117,6 +138,12 @@ section {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.play-live:hover {
+    background: var(--tropical-teal);
+    color: #fff;
+    
 }
 
 .play-live i {
