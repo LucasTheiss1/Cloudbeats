@@ -233,6 +233,63 @@ section {
     max-width: 420px;
 }
 
+/*Custom Player Styles*/
+
+.custom-player {
+  margin-top: 2rem;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 16px;
+  background: #2a2a2a;
+  border-radius: 20px;
+}
+
+.progress-fill {
+  width: 35%;
+  height: 100%;
+  background: var(--tropical-teal);
+  border-radius: 20px;
+}
+
+.progress-dot {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 17px;
+  height: 17px;
+  background: #050505;
+  border: 2px solid var(--tropical-teal);
+  border-radius: 50%;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+  color: var(--muted-foreground);
+}
+
+.volume-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.volume-row i {
+  color: var(--muted-foreground);
+}
+
+#volumeControl {
+  width: 150px;
+  accent-color: var(--tropical-teal);
+}
+
 /*Footer section*/
 
 footer {
