@@ -137,6 +137,17 @@ section {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
+    transition: none;
+}
+
+/*Cancel Bootstrap hover for live button*/
+.live-button:hover {
+    background: rgba(120, 0, 0, 0.35) !important;
+    color: #fff !important;
+    border-color: var(--destructive-foreground) !important;
+    transform: none !important;
+    box-shadow: none !important;
+    cursor: default !important;
 }
 
 .live-button i {
@@ -248,7 +259,7 @@ section {
 }
 
 .progress-fill {
-  width: 35%;
+  width: 0%;
   height: 100%;
   background: var(--tropical-teal);
   border-radius: 20px;
@@ -256,7 +267,7 @@ section {
 
 .progress-dot {
   position: absolute;
-  left: 35%;
+  left: 0%;
   top: 50%;
   transform: translate(-50%, -50%);
 
