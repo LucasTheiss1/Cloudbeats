@@ -12,10 +12,44 @@ const volumeControl = document.getElementById('volumeControl');
 const albumTitle = document.getElementById('albumTitle');
 const albumCover = document.getElementById('albumCover');
 const listenerCount = document.getElementById('listenerCount');
+// Progress bar elements
+const currentTime = document.getElementById('currentTime');
+const progressFill = document.getElementById('progressFill');
+const progressDot = document.getElementById('progressDot');
 
 // Set initial volume
 player.volume = volumeControl.value;
 
+
+// Timer variables for live stream progress
+let liveTimer = null;
+let liveSeconds = 0;
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function startLiveTimer() {
+  clearInterval(liveTimer);
+
+  liveTimer = setInterval(() => {
+    liveSeconds++;
+    currentTime.textContent = formatTime(liveSeconds);
+
+    const progress = (liveSeconds % 240) / 240 * 100;
+    progressFill.style.width = `${progress}%`;
+    progressDot.style.left = `${progress}%`;
+  }, 1000);
+}
+
+function stopLiveTimer() {
+  clearInterval(liveTimer);
+}
+
+
+// Function to update track information on the page
 function updateTrackInfo(track) {
   document.getElementById('trackInfo').textContent = track;
 }
@@ -74,7 +108,7 @@ async function fetchNowPlaying() {
     let track = "Information unavailable";
     let stationName = "CloudBeats";
     let listeners = 0;
-      
+
     if (data.icestats && data.icestats.source) {
       const source = Array.isArray(data.icestats.source)
         ? data.icestats.source[0]
@@ -114,10 +148,12 @@ function forceReconnect() {
 
 player.addEventListener('pause', () => {
   updatePlayerButton(false);
+  stopLiveTimer();
 });
 
 player.addEventListener('playing', () => {
   updatePlayerButton(true);
+  startLiveTimer();
 });
 
 player.addEventListener('error', () => {
