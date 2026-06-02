@@ -1,4 +1,4 @@
-myplaylist = playlist(mode="random", reload_mode="watch", "/music/playlist.m3u")
+myplaylist = playlist(mode="random", reload_mode="watch", "/mnt/Data/Backup/Music/music/playlist.m3u")
 
 
 radio = myplaylist
@@ -8,10 +8,10 @@ radio = fallback(track_sensitive = false, [radio, blank()])
 nivelado = compress(
   attack=50.0,
   release=300.0,
-  threshold=-18.0,
-  ratio=3.0,
-  gain=3.0,
-  knee=2.0,
+  threshold=-20.0,
+  ratio=20.0,
+  gain=5.0,
+  knee=0.0,
   window=0.1,
   radio
 )
@@ -21,8 +21,8 @@ output.icecast(%mp3,
   port=8000,
   password="hackme",
   mount="stream",
-  name="Radio Lucas",
-  url="http://localhost:8000",
+  name="Radio cloudbeats",
+  url="http://localhost",
   description="Radio Lucas",
   radio
 )

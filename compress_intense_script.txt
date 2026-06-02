@@ -1,0 +1,16 @@
+ompressão Intensa (Limiting)
+
+Você pode ajustar o compress para ter uma relação (ratio) muito alta, funcionando quase como um limitador, e aplicar um ganho de maquiagem (makeup gain) que aproxime o nível de saída ao seu alvo. Por exemplo:
+
+
+nivelado = compress(
+  attack=50.0,
+  release=300.0,
+  threshold=-20.0,  # experimente ajustar este valor conforme seu material
+  ratio=20.0,       # uma relação alta para atuar como limitador
+  gain=5.0,         # ganho de maquiagem para elevar o nível
+  knee=0.0,
+  window=0.1,
+  radio
+)
+
