@@ -390,6 +390,14 @@ body {
     margin-bottom: 1rem;
     color: var(--foreground);
 }
+
+/*Live chat - Song Request - User Profile*/
+
+.live-chat span {
+  color: var(--foreground);
+}
+
+
 /*Footer section*/
 
 footer {
