@@ -57,6 +57,11 @@ body {
     padding: 0;
 }
 
+.container-layout {
+  width: min(100% - 2rem, 1200px);
+  margin: 0 auto;
+}
+
 
 /*Hero Section*/
 
@@ -124,6 +129,7 @@ body {
     margin: 0px;
 }
 
+/*Play live button*/
 .play-live {
     display: inline-block;
     background: var(--tropical-teal);
@@ -133,6 +139,20 @@ body {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.play-button {
+    display: inline-block;
+    background: #007BFF;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+.play-button:hover {
+    background: #0056b3;
 }
 
 .play-live:hover {
@@ -178,11 +198,7 @@ body {
     color: var(--destructive);
 }
 
-.container-layout {
-  width: min(100% - 2rem, 1200px);
-  margin: 0 auto;
-}
-
+/*Playing card Section*/
 .now-playing-section {
     padding: 4rem 1rem 2rem 1rem;
     
@@ -245,21 +261,6 @@ body {
 .now-playing {
     margin-top: 1.5rem;
     padding: 1.5rem;
-}
-
-
-.play-button {
-    display: inline-block;
-    background: #007BFF;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-}
-.play-button:hover {
-    background: #0056b3;
 }
 
 .player { 
@@ -338,7 +339,7 @@ body {
 .discover {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 440px;
     gap: 2rem;
     align-items: start;
 }
@@ -352,7 +353,7 @@ body {
 
 .discover-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
@@ -366,6 +367,7 @@ body {
 .discover-card img {
   width: 100%;
   height: 180px;
+  height: auto;
   object-fit: cover;
 }
 
@@ -384,14 +386,23 @@ body {
   color: var(--muted-foreground);
 }
 
+/*Coming-up Card Aside discover cards*/
 .coming-up {
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  min-height: 400px;
-  padding: 1.5rem;
+    
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    min-height: 500px;
+    padding: 1.75rem;
 }
 
+.coming-up-title {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
 /*Footer section*/
 
 footer {
@@ -400,13 +411,13 @@ footer {
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .discover {
     grid-template-columns: 1fr;
   }
 
   .coming-up {
-    order: -1;
+    order: 1;
   }
 }
 
