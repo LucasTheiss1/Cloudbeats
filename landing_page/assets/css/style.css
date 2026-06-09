@@ -452,7 +452,18 @@ body {
 /*Footer section*/
 
 footer {
-    margin-top: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 300px;
+  padding: 2rem;
+  display: flex;
+  width: 100%;
+}
+
+footer p {
+  Color: var(--muted-foreground);
+  font-size: 1.25rem;
+  text-align: center;
+
 }
 
 
