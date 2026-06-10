@@ -198,10 +198,78 @@ body {
     color: var(--destructive);
 }
 
+/*Wave Animation*/
+
+.hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -80px;
+  width: 140vw;
+  z-index: 0;
+
+
+  transform: translateX(-29.75%);
+  border-radius: 50%;
+  filter: blur(6px);
+  animation: waveFloat 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-wave-primary {
+  top: 40px;
+  filter: blur(8px);
+  opacity: 0.8;
+  animation: waveFloatOne 4s ease-in-out infinite;
+}
+
+.hero-wave-primary path {
+  fill: rgba(20, 184, 165, 0.73);
+}
+
+.hero-wave-secondary {
+  top: 90px;
+  filter: blur(14px);
+  opacity: 0.55;
+  animation: waveFloatTwo 2s ease-in-out infinite;
+}
+
+.hero-wave-secondary path {
+  fill: rgba(13, 148, 137, 0.49);
+}
+
+@keyframes waveFloatOne {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) scaleX(1);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-20px) scaleX(1.08);
+  }
+}
+
+@keyframes waveFloatTwo {
+  0%, 100% {
+    transform: translateX(-50%) translateY(10px) scaleX(1.08);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-10px) scaleX(1);
+  }
+}
+
 /*Playing card Section*/
 .now-playing-section {
-    padding-top: 4rem;
-    padding-bottom: 2rem;
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  
     
 }
 
@@ -213,6 +281,8 @@ body {
     display: flex;
     align-items: center;
     gap: 2rem;
+    position: relative;
+    z-index: 2;
 
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
