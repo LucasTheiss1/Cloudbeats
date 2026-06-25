@@ -33,7 +33,7 @@ services:
     build: ./api
     container_name: api_cloudbeats
     volumes:
-      - ./api:/usr/src/app
+      - ./api:/app
       - /mnt/Data/Backup/Music/teste_projct_radio:/media/notebook/Data/Backup/Music/teste_projct_radio
     ports:
       - "3000:3000"
