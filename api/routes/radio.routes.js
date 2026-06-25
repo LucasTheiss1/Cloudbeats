@@ -1,25 +1,37 @@
 const express = require("express");
-const path = require("path");
-const { getTrackMetadata } = require("../services/metadata.service");
-
 const router = express.Router();
 
-router.get("/now-playing", async (req, res) => {
-  try {
-    const filePath = path.join(__dirname, "..", "music", "Os Paralamas Do Sucesso, Djavan - Uma Brasileira.mp3");
-    const metadata = await getTrackMetadata(filePath);
+const {
+  updateCurrentTrack,
+  getCurrentTrack,
+} = require("../services/radio-state.service");
 
-    res.json({
-      ...metadata,
-      source: "local-mp3",
-      status: "playing"
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: "Could not read track metadata",
-      details: error.message
+router.post("/update", (req, res) => {
+  const { filename } = req.body;
+
+  if (!filename) {
+    return res.status(400).json({
+      success: false,
+      message: "Field 'filename' is required.",
     });
   }
+
+  const currentTrack = updateCurrentTrack(filename);
+
+  return res.status(200).json({
+    success: true,
+    message: "Current track updated successfully.",
+    data: currentTrack,
+  });
+});
+
+router.get("/current", (req, res) => {
+  const currentTrack = getCurrentTrack();
+
+  return res.status(200).json({
+    success: true,
+    data: currentTrack,
+  });
 });
 
 module.exports = router;
