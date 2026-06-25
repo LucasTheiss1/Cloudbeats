@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/covers", express.static("public/covers"));
 
 app.use("/api/radio", radioRoutes);
 
