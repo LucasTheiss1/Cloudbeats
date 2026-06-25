@@ -29,6 +29,16 @@ services:
       - "8080:8080"  # Porta para acessar a interface do Harbor
       - "9000:9000"
 
+  api:
+    build: ./api
+    container_name: api_cloudbeats
+    volumes:
+      - ./api:/usr/src/app
+      - /mnt/Data/Backup/Music/teste_projct_radio:/media/notebook/Data/Backup/Music/teste_projct_radio
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
   nginx:
     image: nginx:latest
     container_name: nginx_proxy
