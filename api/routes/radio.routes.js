@@ -6,6 +6,10 @@ const {
   getCurrentTrack,
 } = require("../services/radio-state.service");
 
+const {
+  getTrackCover,
+} = require("../services/track-metadata.service");
+
 router.post("/update", async (req, res) => {
   const { filename } = req.body;
 
@@ -39,6 +43,30 @@ router.get("/current", (req, res) => {
     success: true,
     data: currentTrack,
   });
+});
+
+
+
+router.get("/cover/current", async (req, res) => {
+  const currentTrack = getCurrentTrack();
+
+  if (!currentTrack.filename) {
+    return res.sendStatus(404);
+  }
+
+  try {
+    const cover = await getTrackCover(currentTrack.filename);
+
+    if (!cover) {
+      return res.sendStatus(404);
+    }
+
+    res.setHeader("Content-Type", cover.mimeType);
+    return res.send(cover.data);
+
+  } catch (error) {
+    return res.sendStatus(404);
+  }
 });
 
 router.get("/now-playing", (req, res) => {
