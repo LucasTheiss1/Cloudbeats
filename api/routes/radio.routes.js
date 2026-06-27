@@ -6,7 +6,7 @@ const {
   getCurrentTrack,
 } = require("../services/radio-state.service");
 
-router.post("/update", (req, res) => {
+router.post("/update", async (req, res) => {
   const { filename } = req.body;
 
   if (!filename) {
@@ -16,13 +16,20 @@ router.post("/update", (req, res) => {
     });
   }
 
-  const currentTrack = updateCurrentTrack(filename);
+  try {
+    const currentTrack = await updateCurrentTrack(filename);
 
-  return res.status(200).json({
-    success: true,
-    message: "Current track updated successfully.",
-    data: currentTrack,
-  });
+    return res.status(200).json({
+      success: true,
+      message: "Current track updated successfully.",
+      data: currentTrack,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: error.message,
+    });
+  }
 });
 
 router.get("/current", (req, res) => {
@@ -31,6 +38,27 @@ router.get("/current", (req, res) => {
   return res.status(200).json({
     success: true,
     data: currentTrack,
+  });
+});
+
+router.get("/now-playing", (req, res) => {
+  const currentTrack = getCurrentTrack();
+
+  const metadata = currentTrack.metadata || {};
+
+  return res.status(200).json({
+    title: metadata.title || "Nothing playing",
+    artist: metadata.artist || "Unknown Artist",
+    album: metadata.album || "Unknown Album",
+    genre: metadata.genre || "Unknown Genre",
+    year: metadata.year || null,
+    duration: metadata.duration || null,
+    status: currentTrack.status,
+    source: "liquidsoap",
+    cover: currentTrack.metadata?.hasCover
+      ? "http://localhost:3000/api/radio/cover/current"
+      : null,
+    updatedAt: currentTrack.updatedAt,
   });
 });
 
