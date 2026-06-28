@@ -2,6 +2,11 @@ const express = require("express");
 
 const radioRoutes = require("./routes/radio.routes");
 
+/**
+ * Application entry point.
+ * Configures the Express server, registers API routes
+ * and starts the HTTP server.
+ */
 const app = express();
 const PORT = process.env.PORT || 3000;
 
