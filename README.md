@@ -157,6 +157,17 @@ The Inter typeface was selected because it offers excellent readability across a
 
 ### Wireframes
 
+The initial interface was designed in Figma before development began.
+
+#### Mobile
+
+![alt text](landing_page/assets/images/wireframe_mobile.png.png)
+
+
+#### Desktop
+
+![alt text](landing_page/assets/images/wireframe_desktop.png)
+![alt text](landing_page/assets/images/wireframe_desktop-2.png)
 
 ## Testing
 
@@ -172,6 +183,7 @@ The Inter typeface was selected because it offers excellent readability across a
 | Navigation         | Works correctly          | ✅    |
 
 ### HTML Validation
+![alt text](landing_page/assets/images/html_testing.png)
 
 No errors.
 
@@ -182,4 +194,90 @@ No errors.
 
 ### JavaScript Validation
 
+![alt text](landing_page/assets/images/jshint.png)
+
 No major issues.
+
+## Technologies Used
+
+### Languages
+
+HTML5
+
+CSS3
+
+JavaScript
+
+Icecast
+
+Liquidsoap
+
+Nginx
+
+### Frameworks
+
+Bootstrap
+
+### Tools
+
+Git
+
+GitHub
+
+VS Code
+
+Docker
+
+AWS EC2
+
+ChatGPT
+
+W3C Schools
+
+## Credits
+
+Bootstrap
+
+Font Awesome
+
+Google Fonts
+
+Spotify
+
+Icecast
+
+Liquidsoap
+
+## Bugs
+
+### Fixed Bugs
+
+- Hero alignment
+- Volume slider
+- Mobile responsiveness
+
+### Known Bugs
+
+- Metadata API is planned for a future version.
+
+## Deployment
+
+CloudBeats is deployed on an AWS EC2 instance using Docker containers to provide a reliable and scalable streaming environment.
+
+The deployment includes:
+
+- AWS EC2 as the hosting platform.
+- Docker Compose to orchestrate the application containers.
+- Nginx as a reverse proxy serving the landing page over HTTPS.
+- Icecast as the audio streaming server.
+- Liquidsoap for playlist management and audio streaming.
+- A custom domain pointing to the EC2 instance.
+- Playlist m3u set with local files mp3.
+
+### Live Project
+
+https://cloudbeats.online
+
+### Repository
+
+https://github.com/LucasTheiss1/cloudbeats
