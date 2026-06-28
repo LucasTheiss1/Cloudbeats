@@ -62,7 +62,7 @@
       <div class="container-layout">
         <div class="playing-card">
           <div class="album-picture">
-                <img id="albumCover" src="assets/images/88796_Hs6_VyDcqxDfCwQm_44438.jpg" alt="Album Art">
+                <img id="albumCover" src="assets/images/cloudbeats_album.png" alt="Album Art">
           </div>
           <div class="track-content">
             <h2 id="albumTitle">Album Title</h2>
@@ -106,6 +106,9 @@
             <div class="col-12 col-sm-6 col-lg-3">
               <div class="discover-card">
                 <img src="assets/images/tropical_hits.png" alt="Tropical Hits">
+                <button class="discover-play-btn" aria-label="Play Tropical Hits">
+                  <i class="fa-solid fa-play"></i>
+                </button>
                 <div class="discover-card-body">
                   <h3>Tropical Hits</h3>
                   <p>Best of summer vibes</p>
@@ -115,6 +118,9 @@
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="discover-card">
             <img src="assets/images/chill-waves.png" alt="Chill Waves">
+            <button class="discover-play-btn" aria-label="Play Tropical Hits">
+                <i class="fa-solid fa-play"></i>
+            </button>
             <div class="discover-card-body">
               <h3>Chill Waves</h3>
               <p>Relax and unwind</p>
@@ -125,6 +131,9 @@
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="discover-card">
             <img src="assets/images/beach_party.png" alt="Chill Waves">
+            <button class="discover-play-btn" aria-label="Play Tropical Hits">
+                <i class="fa-solid fa-play"></i>
+            </button>
             <div class="discover-card-body">
               <h3>Beach party</h3>
               <p>High energy tracks</p>
@@ -135,6 +144,9 @@
         <div class="col-12 col-sm-6 col-lg-3">
           <div class="discover-card">
             <img src="assets/images/sunset_lounge.png" alt="Chill Waves">
+             <button class="discover-play-btn" aria-label="Play Tropical Hits">
+                <i class="fa-solid fa-play"></i>
+            </button>
             <div class="discover-card-body">
               <h3>Sunset Lounge</h3>
               <p>Evening Atmosphere</p>
@@ -143,10 +155,82 @@
         </div>
       </div>
     </div>
-
+    <!-- Coming Up Next Section -->
     <aside class="col-12 col-xl-4">
       <div class="coming-up">
-        <h3 class="coming-up-title">Coming Up Next</h3>
+        <h3 class="coming-up-title">
+          <i class="fa-regular fa-clock"></i>
+          Coming Up Next
+        </h3>
+         <div class="coming-up-list">
+
+      <div class="coming-up-item">
+        <img src="assets/images/tropical_hits.png" alt="Ocean Breeze">
+
+        <div class="coming-up-info">
+          <h4>Ocean Breeze</h4>
+          <p>Luna Wave</p>
+        </div>
+
+        <span>3:42</span>
+      </div>
+
+      <div class="coming-up-item">
+        <img src="assets/images/chill-waves.png" alt="Sunset Boulevard">
+
+        <div class="coming-up-info">
+          <h4>Sunset Boulevard</h4>
+          <p>Rio Groove</p>
+        </div>
+
+        <span>4:15</span>
+      </div>
+
+      <div class="coming-up-item">
+        <img src="assets/images/beach_party.png" alt="Island Dreams">
+
+        <div class="coming-up-info">
+          <h4>Island Dreams</h4>
+          <p>Coastal Sound</p>
+        </div>
+
+        <span>3:58</span>
+      </div>
+
+      <div class="coming-up-item">
+        <img src="assets/images/sunset_lounge.png" alt="Palm Paradise">
+
+        <div class="coming-up-info">
+          <h4>Palm Paradise</h4>
+          <p>Beach Beats</p>
+        </div>
+
+        <span>4:20</span>
+      </div>
+
+      <div class="coming-up-item">
+        <img src="assets/images/sunset_lounge.png" alt="Palm Paradise">
+
+        <div class="coming-up-info">
+          <h4>Paradise Blue</h4>
+          <p>Beach Beats</p>
+        </div>
+
+        <span>3:17</span>
+      </div>
+
+      <div class="coming-up-item">
+        <img src="assets/images/sunset_lounge.png" alt="Palm Paradise">
+
+        <div class="coming-up-info">
+          <h4>Paradise Blue</h4>
+          <p>Beach Beats</p>
+        </div>
+
+        <span>3:17</span>
+      </div>
+
+    </div>
       </div>
     </aside>
 
@@ -185,10 +269,38 @@
     
     </section>
   </main>
+  <!-- Bottom Player Section Sticky -->
+<div class="bottom-player" id="bottomPlayer">
+  <div class="container-layout d-flex align-items-center justify-content-between gap-4">
+    <div class="bottom-player-track d-flex align-items-center gap-3">
+      <img id="bottomAlbumCover" src="assets/images/cloudbeats_album.png" alt="Album Art">
+    
+      <div class="track-content">
+        <h4 id="bottomAlbumTitle" class="mb-0 fs-6 fw-semibold">Tropical Nights</h4>
+        <p id="bottomTrackInfo" class="mb-0 small text-secondary">Summer Vibes ft. Marina Sol</p>
+      </div>
+    </div>
+  
+    <div class="bottom-player-controls d-flex align-items-center gap-4">
+      <button class="btn bottom-player-btn" aria-label="Play" id="bottomPlayLiveBtn">
+        <i class="fa-solid fa-play" id="bottomPlayIcon"></i>
+      </button>
+    
+      <button class="btn bottom-icon-btn" aria-label="Next" id="bottomNextTrackBtn">
+        <i class="fa-solid fa-forward-step"></i>
+      </button>
+    
+      <i class="fa-solid fa-volume-low text-secondary"></i>
+    
+      <input class="bottom-volume" type="range" id="bottomVolumeControl" min="0" max="1" step="0.01" value="0.7">
+    </div>
+  </div>
+</div>
 
-  <footer>
-    <p>&copy; 2026 CloudBeats. All rights reserved.</p>
-  </footer>
-  <script src="assets/js/script.js"></script>
+
+<footer>
+  <p>&copy; 2026 CloudBeats. All rights reserved.</p>
+</footer>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
