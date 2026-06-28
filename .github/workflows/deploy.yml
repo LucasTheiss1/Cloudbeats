@@ -11,10 +11,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositório
+      - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Gerar icecast.xml a partir do template
+      - name: Generate icecast.xml from template
         run: |
           envsubst < ./icecast_config/icecast.xml.tpl > ./icecast_config/icecast.xml
         env:
@@ -24,21 +24,20 @@ jobs:
           ICECAST_ADMIN_PASSWORD: ${{ secrets.ICECAST_ADMIN_PASSWORD }}
           ICECAST_HOSTNAME: ${{ secrets.ICECAST_HOSTNAME }}
 
-      - name: Configurar SSH
+      - name: Configure SSH
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-      - name: Adicionar chave de host do EC2
+      - name: Add EC2 host key
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 35.179.123.46 >> ~/.ssh/known_hosts
 
-      - name: Sincronizar arquivos para a instância EC2
+      - name: Synchronise files to EC2 instance
         run: |
           rsync -avz --delete ./ ubuntu@35.179.123.46:/home/ubuntu/online_radio/
-          
-      - name: Reiniciar containers via Docker Compose
+
+      - name: Restart Docker Compose containers
         run: |
           ssh ubuntu@35.179.123.46 "cd /home/ubuntu/online_radio && docker-compose restart"
-
