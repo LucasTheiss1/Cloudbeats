@@ -326,7 +326,7 @@ body {
     color: var(--muted-foreground);
     font-size: 1.2rem;
     margin: 0;
-    text-align: flex-start;
+    text-align: start;
 }
 
 .now-playing {
