@@ -1,3 +1,6 @@
+![alt text](landing_page/assets/images/cloudbeats_album.png)
+
+
 # 🎧 Cloudbeats
 
 CloudBeats is a modern online radio platform that combines automated music streaming, live broadcasting and a responsive listening experience.
@@ -161,7 +164,7 @@ The initial interface was designed in Figma before development began.
 
 #### Mobile
 
-![alt text](landing_page/assets/images/wireframe_mobile.png.png)
+![alt text](landing_page/assets/images/wireframe_mobile.png)
 
 
 #### Desktop
@@ -273,6 +276,10 @@ The deployment includes:
 - Liquidsoap for playlist management and audio streaming.
 - A custom domain pointing to the EC2 instance.
 - Playlist m3u set with local files mp3.
+
+### Image font
+
+All images has been created in ChatGPT.
 
 ### Live Project
 
