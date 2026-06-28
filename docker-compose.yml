@@ -16,7 +16,7 @@ services:
     image: savonet/liquidsoap:rolling-release-v2.3.x
     container_name: liquidsoap
     volumes:
-      - ./liquidsoap_test_script:/etc/liquidsoap   # Onde seu script.liq está localizado
+      - ./liquidsoap_test_script:/etc/liquidsoap   # where the script is located
       - /mnt/Data/Backup/Music/teste_projct_radio:/media/notebook/Data/Backup/Music/teste_projct_radio                # Diretório com as músicas
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -26,7 +26,7 @@ services:
     command: liquidsoap /etc/liquidsoap/script.liq
     restart: unless-stopped
     ports:
-      - "8080:8080"  # Porta para acessar a interface do Harbor
+      - "8080:8080"  # Port for Liquidsoap's web interface
       - "9000:9000"
 
   api:
