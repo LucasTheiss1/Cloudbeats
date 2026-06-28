@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // Example function to retrieve data from Icecast via JSON.
 const STREAM_URL = 'http://localhost:8000/stream';
 // Assuming Icecast provides its status in JSON format through the /status-json.xsl endpoint.
