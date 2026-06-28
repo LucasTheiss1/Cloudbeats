@@ -51,6 +51,24 @@ nivelado = compress(
   radio
 )
 
+def notify_api(m) =
+  filename = m["filename"]
+
+  if filename != "" then
+    log("Sending current track to API: #{filename}")
+
+    command =
+      "curl -s -X POST http://api_cloudbeats:3000/api/radio/update " ^
+      "-H 'Content-Type: application/json' " ^
+      "-d '{\"filename\":\"" ^ filename ^ "\"}'"
+
+    system(command)
+  end
+end
+
+radio = source.on_metadata(radio, notify_api)
+
+
 output.icecast(%mp3(bitrate=64),
   host="icecast",
   port=8000,
