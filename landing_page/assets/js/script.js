@@ -16,6 +16,29 @@ const listenerCount = document.getElementById('listenerCount');
 const currentTime = document.getElementById('currentTime');
 const progressFill = document.getElementById('progressFill');
 const progressDot = document.getElementById('progressDot');
+// Sticky bar bottom of the audio player
+const mainPlayer = document.querySelector(".now-playing-section");
+const bottomPlayer = document.querySelector(".bottom-player");
+const bottomPlayLiveBtn = document.getElementById('bottomPlayLiveBtn');
+const bottomPlayIcon = document.getElementById('bottomPlayIcon');
+const bottomVolumeControl = document.getElementById('bottomVolumeControl');
+const bottomAlbumTitle = document.getElementById('bottomAlbumTitle');
+const bottomTrackInfo = document.getElementById ('bottomTrackInfo');
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      bottomPlayer.classList.remove("is-visible");
+    } else {
+      bottomPlayer.classList.add("is-visible");
+    }
+  },
+  {
+    threshold: 0.2,
+  }
+);
+
+observer.observe(mainPlayer);
 
 // Set initial volume
 player.volume = volumeControl.value;
@@ -52,10 +75,12 @@ function stopLiveTimer() {
 // Function to update track information on the page
 function updateTrackInfo(track) {
   document.getElementById('trackInfo').textContent = track;
+  document.getElementById('bottomTrackInfo').textContent = track;
 }
 
 function updateAlbumTitle(title) {
   albumTitle.textContent = title;
+  bottomAlbumTitle.textContent = title;
 }
 
 function updateAlbumCover(imageUrl) {
@@ -165,3 +190,27 @@ fetchNowPlaying();
 setInterval(fetchNowPlaying, 30000);
 // Update every 30 seconds
 
+if (bottomPlayLiveBtn) {
+  bottomPlayLiveBtn.addEventListener('click', () => {
+    playLiveBtn.click();
+  });
+}
+
+if (bottomVolumeControl) {
+  bottomVolumeControl.addEventListener('input', () => {
+    volumeControl.value = bottomVolumeControl.value;
+    volumeControl.dispatchEvent(new Event('input'));
+  });
+}
+
+player.addEventListener('playing', () => {
+  if (bottomPlayIcon) {
+    bottomPlayIcon.className = 'fa-solid fa-pause';
+  }
+});
+
+player.addEventListener('pause', () => {
+  if (bottomPlayIcon) {
+    bottomPlayIcon.className = 'fa-solid fa-play';
+  }
+});
