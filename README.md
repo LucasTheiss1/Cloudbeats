@@ -49,6 +49,27 @@ The colour scheme was chosen to:
 - Improve readability.
 - Reinforce the energetic identity of the radio station.
 
+## Features
+
+### Existing Features
+
+- Responsive landing page
+- Audio player
+- Live radio streaming
+- Play/Pause controls
+- Volume control
+- Responsive navigation
+- Curated playlists
+- Live indicator
+
+### Future Features
+
+- Radio API
+- Admin Dashboard
+- Playlist management
+- Live metadata
+- Mobile application
+
 ### Future Administrator
 
 - As a radio administrator, I want to manage playlists so that I can control the station schedule.
@@ -137,3 +158,28 @@ The Inter typeface was selected because it offers excellent readability across a
 ### Wireframes
 
 
+## Testing
+
+| Test               | Expected Result          | Pass |
+| ------------------ | ------------------------ | ---- |
+| Website loads      | Homepage loads correctly | ✅    |
+| Play button        | Audio starts             | ✅    |
+| Pause button       | Audio pauses             | ✅    |
+| Volume slider      | Changes volume           | ✅    |
+| Responsive Mobile  | Layout adjusts           | ✅    |
+| Responsive Tablet  | Layout adjusts           | ✅    |
+| Responsive Desktop | Layout adjusts           | ✅    |
+| Navigation         | Works correctly          | ✅    |
+
+### HTML Validation
+
+No errors.
+
+### CSS Validation
+![alt text](landing_page/assets/images/W3C_validator_CSS.png)
+
+No errors.
+
+### JavaScript Validation
+
+No major issues.
