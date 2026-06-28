@@ -1,5 +1,10 @@
 const fs = require("fs");
 
+/**
+ * Extracts readable metadata from an audio file.
+ * This information is used by the API to expose the current
+ * "Now Playing" track details to the frontend.
+ */
 async function getTrackMetadata(filename) {
   if (!fs.existsSync(filename)) {
     throw new Error(`File not found: ${filename}`);
@@ -23,6 +28,11 @@ async function getTrackMetadata(filename) {
   };
 }
 
+/**
+ * Extracts the embedded album artwork from an audio file.
+ * The image is returned directly from memory and is not saved
+ * to the filesystem.
+ */
 async function getTrackCover(filename) {
   if (!fs.existsSync(filename)) {
     throw new Error(`File not found: ${filename}`);

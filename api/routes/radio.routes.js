@@ -1,15 +1,23 @@
 const express = require("express");
 const router = express.Router();
 
+// Radio state management services
 const {
   updateCurrentTrack,
   getCurrentTrack,
 } = require("../services/radio-state.service");
 
+
+// Metadata extraction utilities
 const {
   getTrackCover,
 } = require("../services/track-metadata.service");
 
+/**
+ * Receives track updates from Liquidsoap.
+ * The request contains the filename of the currently playing track,
+ * which is used to load and cache its metadata.
+ */
 router.post("/update", async (req, res) => {
   const { filename } = req.body;
 
@@ -36,6 +44,10 @@ router.post("/update", async (req, res) => {
   }
 });
 
+/**
+ * Returns the complete cached state of the current track.
+ * Used internally by the application and debugging tools.
+ */
 router.get("/current", (req, res) => {
   const currentTrack = getCurrentTrack();
 
@@ -45,8 +57,10 @@ router.get("/current", (req, res) => {
   });
 });
 
-
-
+/**
+ * Serves the album artwork of the current track.
+ * Returns the embedded cover image if available.
+ */
 router.get("/cover/current", async (req, res) => {
   const currentTrack = getCurrentTrack();
 
@@ -69,6 +83,11 @@ router.get("/cover/current", async (req, res) => {
   }
 });
 
+/**
+ * Public endpoint consumed by the frontend.
+ * Returns simplified "Now Playing" information together
+ * with an optional URL for the current album artwork.
+ */
 router.get("/now-playing", (req, res) => {
   const currentTrack = getCurrentTrack();
 
